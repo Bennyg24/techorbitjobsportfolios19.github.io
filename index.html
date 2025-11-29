@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Developer Portfolio - Jimmy Brown</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Game Developer Design: Dynamic, Futuristic, Black/Red/White --- */
+        :root {
+            --gd-primary: #FF0000; /* Neon Red/Game Accent */
+            --gd-secondary: #AAAAAA; /* Gray Text */
+            --gd-background: #000000; /* Black */
+            --gd-dark: #1A1A1A;
+            --gd-text: #E0E0E0;
+            --gd-shadow: rgba(255, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--gd-text);
+            background: var(--gd-background);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: var(--gd-primary); transition: color 0.3s; }
+        .section { padding: 80px 0; }
+
+        /* --- Header/Profile Area --- */
+        .gd-header {
+            background: var(--gd-dark);
+            color: white;
+            padding: 40px 0;
+            border-bottom: 5px solid var(--gd-primary);
+        }
+
+        .gd-profile-area {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        
+        .gd-left-panel {
+            flex-shrink: 0;
+            width: 250px;
+            text-align: center;
+            border-right: 2px dashed rgba(255, 0, 0, 0.3);
+            padding-right: 40px;
+        }
+
+        .gd-profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--gd-primary);
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .gd-contact-details {
+            font-size: 0.9em;
+            text-align: left;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+        .gd-contact-details p { margin: 5px 0; color: var(--gd-secondary); }
+
+        .gd-main-content { flex-grow: 1; }
+
+        #dynamicGreeting {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            color: var(--gd-primary);
+            margin-bottom: 5px;
+        }
+
+        .gd-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5em;
+            margin: 0 0 10px;
+            font-weight: 900;
+        }
+        .gd-header h2 {
+            font-size: 1.6em;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        /* --- Project Grid Styles --- */
+        .gd-projects-section {
+             background: var(--gd-background);
+             padding-top: 0;
+             padding-bottom: 60px;
+        }
+        .gd-project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .gd-project-card {
+            background: var(--gd-dark);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--gd-shadow);
+            overflow: hidden;
+            text-align: left;
+        }
+        .gd-project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--gd-primary);
+        }
+        .gd-project-content { padding: 20px; }
+        .gd-project-content h4 { color: white; margin-top: 0; font-size: 1.4em; }
+        .gd-project-content a { font-weight: 700; color: var(--gd-primary); }
+
+
+        /* --- Skills and Competencies --- */
+        .gd-section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5em;
+            color: var(--gd-primary);
+            margin-bottom: 50px;
+        }
+        
+        .gd-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .gd-skill-card {
+            background: var(--gd-dark);
+            padding: 25px;
+            border-left: 3px solid var(--gd-primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            text-align: left;
+        }
+        .gd-skill-card h4 { color: white; margin-top: 0; }
+        .gd-skill-card p { font-size: 0.9em; }
+
+        /* --- Call to Action (CTA) --- */
+        .gd-cta-section {
+            background: var(--gd-primary);
+            padding: 70px 0;
+            text-align: center;
+            color: var(--gd-dark);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+        }
+        .gd-cta-btn {
+            display: inline-block;
+            background: white;
+            color: var(--gd-primary);
+            padding: 16px 45px;
+            border-radius: 4px;
+            font-weight: 900;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .gd-cta-btn:hover { background: var(--gd-secondary); color: var(--gd-dark); transform: scale(1.05); }
+
+        @media (max-width: 768px) {
+            .gd-profile-area { flex-direction: column; text-align: center; }
+            .gd-left-panel { width: 100%; padding-right: 0; border-right: none; border-bottom: 2px dashed rgba(255, 0, 0, 0.3); padding-bottom: 20px; }
+            .gd-contact-details { text-align: center; }
+            .gd-main-content { padding-top: 20px; }
+            .gd-header h1 { font-size: 2.8em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="gd-header">
+        <div class="container">
+            <div class="gd-profile-area">
+                <div class="gd-left-panel">
+                    <img src="https://techorbitjobs.com/wp-content/uploads/2025/10/testimonial-7.webp" alt="Jimmy Brown Profile" class="gd-profile-img">
+                    <div class="gd-contact-details">
+                        <p><strong>Location:</strong> Abuja, Nigeria</p>
+                        <p><strong>Email:</strong> jimmy.brown@example.com</p>
+                        <p><strong>LinkedIn:</strong> [Your LinkedIn URL]</p>
+                        <p><strong>Portfolio:</strong> [Your Game Demo Link]</p>
+                    </div>
+                </div>
+
+                <div class="gd-main-content">
+                    <div id="dynamicGreeting"></div>
+                    <h1>JIMMY BROWN</h1>
+                    <h2>GAME DEVELOPER | C++ & UNITY</h2>
+                    <p>
+                        I am a passionate Game Developer specializing in rapid prototyping and full-cycle development using Unity (C#) and Unreal Engine (C++). My focus is on creating immersive gameplay mechanics, optimizing graphics pipelines, and delivering polished, bug-free interactive experiences for PC and mobile platforms.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="gd-section-title">TECHNICAL SKILLS & CORE COMPETENCIES</h2>
+            <div class="gd-skills-grid">
+                <div class="gd-skill-card">
+                    <h4>Engines & Frameworks</h4>
+                    <p>Unity (C#), Unreal Engine (C++), Godot, Git/Version Control.</p>
+                </div>
+                <div class="gd-skill-card">
+                    <h4>Programming & Logic</h4>
+                    <p>Advanced C#, C++, Object-Oriented Programming (OOP), Data Structures, Shaders (HLSL/GLSL).</p>
+                </div>
+                <div class="gd-skill-card">
+                    <h4>Gameplay & Systems</h4>
+                    <p>AI pathfinding, physics implementation, UI/UX integration, network programming basics.</p>
+                </div>
+                <div class="gd-skill-card">
+                    <h4>Optimization & Tools</h4>
+                    <p>Performance profiling, memory management, graphics optimization, Maya/Blender integration.</p>
+                </div>
+            </div>
+
+            <h2 class="gd-section-title">FEATURED GAME DEMOS</h2>
+            <div class="gd-project-grid">
+                <div class="gd-project-card">
+                    <img src="project1.png" alt="Unity 3D Prototype Screenshot">
+                    <div class="gd-project-content">
+                        <h4>Procedural Level Generation (Unity)</h4>
+                        <p>Developed a custom Unity tool for generating infinite 3D platformer levels using noise functions and C# scripting.</p>
+                        <a href="[Link to Demo Video]">View Demo</a>
+                    </div>
+                </div>
+                <div class="gd-project-card">
+                    <img src="project2.png" alt="Unreal Engine Combat Screenshot">
+                    <div class="gd-project-content">
+                        <h4>Custom Combat System (Unreal Engine C++)</h4>
+                        <p>Engineered a responsive, state-based combat system for an action RPG, managing hitboxes and damage models in C++.</p>
+                        <a href="[Link to GitHub]">View Code</a>
+                    </div>
+                </div>
+                <div class="gd-project-card">
+                    <img src="project3.png" alt="Mobile Game UI Screenshot">
+                    <div class="gd-project-content">
+                        <h4>Mobile Puzzle Game (C# Optimization)</h4>
+                        <p>Optimized a mobile puzzle game to run at 60 FPS on low-end devices by efficiently managing draw calls and memory.</p>
+                        <a href="[Link to App Store/Play Store]">Play Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gd-cta-section">
+        <div class="container">
+            <h3>READY TO BRING YOUR GAME TO LIFE?</h3>
+            <a href="[Link to Contact/Project Inquiry]" class="gd-cta-btn">START THE QUEST HERE</a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const greetingElement = document.getElementById('dynamicGreeting');
+            const date = new Date();
+            const hour = date.getHours();
+            let greeting;
+            if (hour < 12) { greeting = 'Good morning!'; } 
+            else if (hour < 18) { greeting = 'Good afternoon!'; } 
+            else { greeting = 'Good evening!'; }
+            if (greetingElement) { greetingElement.textContent = greeting + ' Welcome to my portfolio,'; }
+        });
+    </script>
+</body>
+</html>
